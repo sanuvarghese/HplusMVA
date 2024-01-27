@@ -2,7 +2,7 @@
 ssh -XY <username>@lxplus7.cern.ch
 ```
 ```
-```
+
 cmsrel CMSSW_12_3_0
 cd CMSSW_12_3_0/src
 cmsenv
