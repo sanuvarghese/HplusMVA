@@ -8,7 +8,10 @@ cd CMSSW_12_3_0/src
 cmsenv
 git cms-init
 scram b -j 8
-cd Reader/
+
+git clone https://github.com/sanuvarghese/HplusMVA/
+
+cd HplusMVA/Reader
 ```
 ### To run create the MVA histograms
 
