@@ -1,4 +1,4 @@
-To process all files assign the correct btagging weight normalisation.
+To process all files and assign the correct btagging weight normalisation.
 
 ```
 ./runPreAna.sh
