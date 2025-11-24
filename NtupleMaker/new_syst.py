@@ -8,71 +8,76 @@ def define_weight(df, scenario):
     weight_expression = "float(sampleWeight * wt_ratio"
 
     if scenario == "base":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight * topPtReWeight)"
     elif scenario == "JEC_up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_jes_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_jes_Up)"
     elif scenario == "JEC_do":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_jes_Do)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_jes_Do)"
     elif scenario == "PUWeight_do":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight_Do * muEffWeight * bcTagWeight_pu_Do)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight_Do * muEffWeight * topPtReWeight * bcTagWeight_pu_Do)"
     elif scenario == "PUWeight_up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight_Up * muEffWeight * bcTagWeight_pu_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight_Up * muEffWeight * topPtReWeight * bcTagWeight_pu_Up)"
     elif scenario == "prefire_up":
-        weight_expression += "*puJetIDWeight * prefireWeight_Up * PUWeight * muEffWeight * bcTagWeight)"
+        weight_expression += "*puJetIDWeight * prefireWeight_Up * PUWeight * muEffWeight * topPtReWeight * bcTagWeight)"
     elif scenario == "prefire_do":
-        weight_expression += "*puJetIDWeight * prefireWeight_Do * PUWeight * muEffWeight * bcTagWeight)"
+        weight_expression += "*puJetIDWeight * prefireWeight_Do * PUWeight * muEffWeight * topPtReWeight * bcTagWeight)"
     elif scenario == "muEff_do":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight_Do * bcTagWeight_muid_Do)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight_Do * topPtReWeight * bcTagWeight_muid_Do)"
     elif scenario == "muEff_up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight_Up * bcTagWeight_muid_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight_Up * topPtReWeight * bcTagWeight_muid_Up)"
     elif scenario == "bc_stat_up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_stat_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_stat_Up)"
     elif scenario == "bc_stat_do":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_stat_Do)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_stat_Do)"
     elif scenario == "bc_lhemuf_do":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_lhemuf_Do)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_lhemuf_Do)"
     elif scenario == "bc_lhemuf_up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight_Up * bcTagWeight_lhemuf_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight_Up * topPtReWeight* bcTagWeight_lhemuf_Up)"
     elif scenario == "lhemur_up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_lhemur_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_lhemur_Up)"
     elif scenario == "lhemur_do":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_lhemur_Do)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_lhemur_Do)"
     elif scenario == "isr_up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_isr_Up * ISRweight_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_isr_Up * ISRweight_Up)"
     elif scenario == "isr_do":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_isr_Do * ISRweight_Do)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_isr_Do * ISRweight_Do)"
     elif scenario == "fsr_up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_fsr_Up * FSRweight_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_fsr_Up * FSRweight_Up)"
     elif scenario == "fsr_do":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_fsr_Do * FSRweight_Do)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_fsr_Do * FSRweight_Do)"
     elif scenario == "xdyb_up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_xdyb_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_xdyb_Up)"
     elif scenario == "xdyb_do":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_xdyb_Do)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_xdyb_Do)"
     elif scenario == "xdyc_up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_xdyc_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_xdyc_Up)"
     elif scenario == "xdyc_do":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_xdyc_Do)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_xdyc_Do)"
     elif scenario == "intp_up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_intp_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_intp_Up)"
     elif scenario == "intp_do":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_intp_Do)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_intp_Do)"
     elif scenario == "extp_up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_extp_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_extp_Up)"
     elif scenario == "extp_do":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_extp_Do)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_extp_Do)"
     elif scenario == "xwj_up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_xwjc_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_xwjc_Up)"
     elif scenario == "xwj_do":
-         weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_xwjc_Do)"
+         weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_xwjc_Do)"
     elif scenario == "bfrag_do":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_bfrag_Do)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_bfrag_Do)"
     elif scenario == "bfrag_Up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight_bfrag_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight_bfrag_Up)"
     elif scenario == "pdf_Up":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight * pdfweight_Up)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight * pdfweight_Up)"
     elif scenario == "pdf_Do":
-        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight * pdfweight_Do)"
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * topPtReWeight * bcTagWeight * pdfweight_Do)"
+    elif scenario == "topPt_up":
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight * topPtReWeight * topPtReWeight)"
+    elif scenario == "topPt_do":
+        weight_expression += "*puJetIDWeight * prefireWeight * PUWeight * muEffWeight * bcTagWeight * 1)"
+        
     else:
         raise ValueError(f"Unknown scenario: {scenario}")
 

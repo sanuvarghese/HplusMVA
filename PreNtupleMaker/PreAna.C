@@ -1,8 +1,8 @@
 void PreAna(TString process) {
 
-  TFile *inputFilebase = TFile::Open("/eos/user/i/idas/Output/cms-hcs-run2/CBA_jecsyst/post/2016/all/all_"+process+".root");
+  TFile *inputFilebase = TFile::Open("/eos/user/i/idas/Output/cms-hcs-run2/CBA_metxycorr/pre/2018/all/all_"+process+".root");
 
-  TString outputdir = "/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2016/post/post_res/";
+  TString outputdir = "/eos/cms/store/group/phys_b2g/savarghe/NewJEC/pre/pre_res/";
 
   auto wt_before = (TH1D*) inputFilebase->Get(process+"/base/Iso/_wt_before_mu");
 
@@ -20,8 +20,9 @@ void PreAna(TString process) {
   auto h1 = new TH1D("bdt","Classifier output ",20,0,2);
 
   TChain *ttbar= new TChain("Kinfit_Reco");
-  ttbar->Add("/eos/cms/store/group/phys_b2g/idas/Output/cms-hcs-run2/Result/CBA_jecsyst/post/2016/"+process+"_tree_base_*");
-
+  ttbar->Add("/eos/cms/store/group/phys_b2g/idas/Output/cms-hcs-run2/Result/CBA_metxycorr/2018/"+process+"_tree_base_*");
+  // ttbar->Add("/eos/cms/store/group/phys_b2g/savarghe/NewJEC/CBA_Ntuples/2018/"+process+"_tree_base_*");
+  // /eos/cms/store/group/phys_b2g/savarghe/NewJEC/CBA_Ntuples/2018
   Double_t         sampleWeight;
   Double_t puJetIDWeight; 
   Double_t prefireWeight;
@@ -125,6 +126,7 @@ void PreAna(TString process) {
   Float_t      METPt;
   Double_t      muonpfRelIso;
   Double_t      elepfRelIso;
+  Double_t      topPtReWeight;
   // Float_t   
 //  Double_t      isLowMET;
   //Float_t      eleIsoCut;
@@ -235,6 +237,8 @@ tree.SetBranchAddress("pdfweight_Up",&pdfweight_Up);
 tree.SetBranchAddress("muonpfRelIso",&muonpfRelIso);
 tree.SetBranchAddress("elepfRelIso",&elepfRelIso);
 tree.SetBranchAddress("METPt",&METPt);
+tree.SetBranchAddress("topPtReWeight",&topPtReWeight);
+
 
 TFile newfile(outputdir+"all_"+processName+".root", "recreate");
     TTree *T = new TTree("Kinfit_Reco","skimmed test tree");
@@ -340,6 +344,7 @@ T->Branch("bcTagWeight_intp_Up",&bcTagWeight_intp_Up);
 T->Branch("bcTagWeight_intp_Do",&bcTagWeight_intp_Do);
 T->Branch("bcTagWeight_extp_Up",&bcTagWeight_extp_Up);
 T->Branch("bcTagWeight_extp_Do",&bcTagWeight_extp_Do);
+T->Branch("topPtReWeight",&topPtReWeight);
 
 
     //reader.AddVariable("dPhi_j1b2",'F')

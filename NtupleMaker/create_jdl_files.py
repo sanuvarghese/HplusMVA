@@ -5,7 +5,7 @@ current_working_dir = os.getcwd()
 
 
 # Common directory for output, error, and log files
-common_dir = "/afs/cern.ch/work/s/savarghe/private/NewJEC/Ntuple/ele/2016"
+common_dir = "/afs/cern.ch/work/s/savarghe/private/NewJEC/Ntuple/ele/2017"
 
 output_dir = os.path.join(common_dir, "output")
 error_dir = os.path.join(common_dir, "error")
@@ -18,11 +18,11 @@ for dir_path in [output_dir, error_dir, log_dir]:
 
 
 processes = [
-     "TTbar", "DataMu", "DataEle",
+    "TTbar", "DataMu", "DataEle",
     "HplusM040", "HplusM050", "HplusM060", "HplusM070", 
     "HplusM080", "HplusM090", "HplusM100",
     "HplusM110", "HplusM120", "HplusM130", "HplusM140", "HplusM150", "HplusM155", "HplusM160",
-    "singleTop", "Wjets", "DYjets", "VBFusion", "MCQCDMu", "MCQCDEle",
+    "singleTop", "Wjets", "DYjets", "VBFusion", "MCQCDEle", "MCQCDEle",
     "TTGToLL", "TTGToLNu", "TTGToQQ", 
 "TTHToNonbb", "TTHTobb", 
    "TTHToGG",
@@ -31,29 +31,33 @@ processes = [
 ]
 
 filename_scenarios = [
-    "base", "iso20", "metup", "metdown", "cp5up", "cp5down", "hdampup", "hdampdown", "mtopup", "mtopdown",
-    "absmpfbup", "abssclup", "absstatup", "flavorqcdup", "fragup", "timeptetaup",
-    "pudatamcup", "puptbbup", "puptec1up", "puptec2up", "pupthfup", "puptrefup",
-    "relfsrup", "relbalup", "relsampleup", "reljerec1up", "reljerec2up", "reljerhfup",
-    "relptbbup", "relptec1up", "relptec2up", "relpthfup", "relstatecup", "relstatfsrup", "relstathfup",
-    "singpiecalup", "singpihcalup", "absmpfbdown", "absscldown", "absstatdown",
-    "flavorqcddown", "fragdown", "timeptetadown", "pudatamcdown", "puptbbdown", "puptec1down", 
-    "puptec2down", "pupthfdown", "puptrefdown", "relfsrdown", "relbaldown", "relsampledown",
-    "reljerec1down", "reljerec2down", "reljerhfdown", "relptbbdown", "relptec1down", "relptec2down",
-    "relpthfdown", "relstatecdown", "relstatfsrdown", "relstathfdown", "singpiecaldown", "singpihcaldown",
+     "base", #"iso20", "metup", "metdown", "cp5up", "cp5down", "hdampup", "hdampdown", "mtopup", "mtopdown",
+#     "absmpfbup", "abssclup", "absstatup", "flavorqcdup", "fragup", "timeptetaup",
+#     "pudatamcup", "puptbbup", "puptec1up", "puptec2up", "pupthfup", "puptrefup",
+#     "relfsrup", "relbalup", "relsampleup", "reljerec1up", "reljerec2up", "reljerhfup",
+#     "relptbbup", "relptec1up", "relptec2up", "relpthfup", "relstatecup", "relstatfsrup", "relstathfup",
+#     "singpiecalup",
+#    "singpihcalup", #"absmpfbdown", "absscldown", "absstatdown",
+#     "flavorqcddown", "fragdown", "timeptetadown", "pudatamcdown", "puptbbdown", "puptec1down", 
+#     "puptec2down", "pupthfdown", "puptrefdown", "relfsrdown", "relbaldown", "relsampledown",
+#     "reljerec1down", "reljerec2down", "reljerhfdown", "relptbbdown", "relptec1down", "relptec2down",
+#     "relpthfdown", "relstatecdown", "relstatfsrdown", "relstathfdown", "singpiecaldown",
+ #   "singpihcaldown",
+#      "jerup" , "jerdown"
 ]
 
 argument_scenarios = [
-    "base", "PUWeight_do", "PUWeight_up", "prefire_up", "prefire_do",
-    "muEff_do", "muEff_up", "bc_stat_up", "bc_stat_do", "bc_lhemuf_do", "bc_lhemuf_up", "lhemur_up",
-    "lhemur_do", "isr_up", "isr_do", "fsr_up", "fsr_do", "xdyb_up", "xdyb_do", "xdyc_up",
-    "xdyc_do", "intp_up", "intp_do", "extp_up", "extp_do", "xwj_up","xwj_do", "bfrag_do", "bfrag_Up",
-    "pdf_Up", "pdf_Do", "JEC_up", "JEC_do",
+     "base",# "PUWeight_do", "PUWeight_up", "prefire_up", "prefire_do",
+    # "eleEff_do", "eleEff_up", "bc_stat_up", "bc_stat_do", "bc_lheelef_do", "bc_lheelef_up", "lheeler_up",
+    # "lheeler_do", "isr_up", "isr_do", "fsr_up", "fsr_do", "xdyb_up", "xdyb_do", "xdyc_up",
+    # "xdyc_do", "intp_up", "intp_do", "extp_up", "extp_do", "xwj_up","xwj_do", "bfrag_do", "bfrag_Up",
+    # "pdf_Up", "pdf_Do", "JEC_up", "JEC_do",
+#    "topPt_up","topPt_do",
 ]
 
 channel = "ele"
 region = "A"
-jdl_directory = "./condor_2016" + channel + region
+jdl_directory = "./condor_2017_base_" + channel + region
 
 # Ensure the JDL directory exists
 if not os.path.exists(jdl_directory):
@@ -133,4 +137,4 @@ for process in processes:
 # print(f"DAG file created: {dag_file_path}")
 # Dedicated loop for 'base' filename_scenario and 'base' argument_scenario
 for process in processes:
-    create_jdl(process, "base", "base")
+     create_jdl(process, "base", "base")

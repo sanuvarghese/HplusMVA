@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Directories containing ROOT files
-DIR1="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2016/pre/pre_all"
-DIR2="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2016/post/post_all"
+DIR1="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/pre/pre_all"
+DIR2="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/post/post_all"
 
 # Loop over ROOT files in the first directory
 for FILE1 in $DIR1/*.root; do

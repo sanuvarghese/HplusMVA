@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Directory containing error files
-error_dir="/afs/cern.ch/work/s/savarghe/private/NewJEC/Ntuple/error"
+error_dir="/afs/cern.ch/work/s/savarghe/private/JEC_metxy/2018/preAna/error"
 
 # Directory containing JDL files
-jdl_dir="./condor"
+jdl_dir="./jdl"
 
 # Log file to record the status of error checks and resubmission
 log_file="./resubmit_log.txt"
@@ -25,24 +25,30 @@ submit_job() {
 # Loop through all error files in the directory
 for err_file in "$error_dir"/*.err; do
     if [ ! -s "$err_file" ]; then
-        echo "Success: $err_file is empty." >> "$log_file"
+        echo "Success: $err_file is empty."
     else
         # Extract the job name from the error file name
         job_name=$(basename "$err_file" .err)
+# Check if the job name ends with an underscore and adjust the JDL file name accordingly
+        if [[ $job_name == *'_' ]]; then
+            jdl_file="${job_name}base.jdl"
+        else
+            jdl_file="${job_name}.jdl"
+        fi
 
         # Apply your skipping criteria as before
         if [[ "$job_name" == *"DataMu"* ]] || 
            [[ "$job_name" == *"DataEle"* ]] || 
-           [[ "$job_name" == HplusM0[4-7]0* ]] || 
-           [[ "$job_name" == *"jerup"* ]] || 
-           [[ "$job_name" == *"jerdown"* ]] || 
-           [[ "$job_name" == *"metup"* ]] || 
-           [[ "$job_name" == *"metdown"* ]] ||
-           [[ "$job_name" == *"iso20"* ]] || 
+           # [[ "$job_name" == HplusM0[4-7]0* ]] || 
+           # [[ "$job_name" == *"jerup"* ]] || 
+           # [[ "$job_name" == *"jerdown"* ]] || 
+           # [[ "$job_name" == *"metup"* ]] || 
+           # [[ "$job_name" == *"metdown"* ]] ||
+           # [[ "$job_name" == *"iso20"* ]] || 
            [[ "$job_name" == MCQCD* ]] || 
-           [[ "$job_name" == *"TTWJetsToLNu"* ]] || 
-           [[ "$job_name" == *"TTHTobb"* ]] || 
-           [[ "$job_name" == *"TTHToNonbb"* ]] ||
+           # [[ "$job_name" == *"TTWJetsToLNu"* ]] || 
+           # [[ "$job_name" == *"TTHTobb"* ]] || 
+           # [[ "$job_name" == *"TTHToNonbb"* ]] ||
 	   { [[ "$job_name" != *"TTbar"* ]] && 
              ([[ "$job_name" == *"cp5up"* ]] || 
               [[ "$job_name" == *"cp5down"* ]] || 
@@ -57,8 +63,8 @@ for err_file in "$error_dir"/*.err; do
         echo "Failed: $err_file contains errors. Preparing for resubmission." >> "$log_file"
 
         # Construct the path to the corresponding JDL file
-        jdl_file_path="$jdl_dir/${job_name}.jdl"
-
+      #  jdl_file_path="$jdl_dir/${job_name}.jdl"
+        jdl_file_path="${jdl_dir}/${jdl_file}"
         if [ -f "$jdl_file_path" ]; then
             echo "Resubmitting $job_name." >> "$log_file"
             submit_job "$jdl_file_path"

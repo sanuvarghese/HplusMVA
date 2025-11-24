@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Directories containing the ROOT files
-dir1="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2016/pre/pre_res"
-dir2="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2016/post/post_res"
+dir1="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/pre/pre_res"
+dir2="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/post/post_res"
 
 # Output directory for merged ROOT files
-outputDir="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2016/pre/Combined_all"
+outputDir="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/pre/Combined_all"
 
 # Check if output directory exists, if not create it
 if [ ! -d "$outputDir" ]; then

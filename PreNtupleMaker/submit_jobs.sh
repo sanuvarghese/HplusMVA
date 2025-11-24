@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Directory containing your JDL files
-JDL_DIRECTORY="./condor_muA"
+JDL_DIRECTORY="./jdl2018"
 
 # Batch name for grouping jobs
-BATCH_NAME="NtupleMaker_muA"
+BATCH_NAME="PreNtupleMaker2018"
 
 # Loop through each JDL file in the directory and submit it
 for jdl_file in "$JDL_DIRECTORY"/*.jdl; do

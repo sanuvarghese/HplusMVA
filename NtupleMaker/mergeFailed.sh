@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Directories containing the ROOT files to merge
-dir1="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2016/pre/pre_all"
-dir2="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2016/post/post_all"
+dir1="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/pre/pre_all"
+dir2="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/post/post_all"
 
 # Output directory for merged ROOT files
-outputDir="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2016/pre/test2"
+outputDir="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/pre/test2"
 
 # File containing the list of ROOT files to re-merge
 listFile="failed_verifications.txt"

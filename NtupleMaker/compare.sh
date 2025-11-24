@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Directories containing the ROOT files
-dir1="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2016/pre/pre_all"
-dir2="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2016/post/post_all"
+dir1="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/pre/pre_all"
+dir2="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/post/post_all"
 
 # Temporary files to hold the list of filenames (without path)
 tmp1=$(mktemp)

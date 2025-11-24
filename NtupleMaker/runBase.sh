@@ -2,12 +2,13 @@
 
 # List of processes
 processes=(
-   "HplusM040" "HplusM050" "HplusM060" "HplusM070" "HplusM080" "HplusM090" "HplusM100"
-   "HplusM110" "HplusM120" 
-   "HplusM130" "HplusM140" "HplusM150" "HplusM155" "HplusM160"
-   "singleTop" "Wjets" "DYjets" "VBFusion" "MCQCDMu" "MCQCDEle"
-   "TTGToLL" "TTGToLNu" "TTGToQQ" "TTHToNonbb" "TTHTobb" "TTHToGG"
-   "TTWJetsToLNu" "TTWJetsToQQ" "TTZToLLNuNu" "TTZToQQ" "TTbar" "DataMu" "DataEle"
+   # "HplusM040" "HplusM050" "HplusM060" "HplusM070" "HplusM080" "HplusM090" "HplusM100"
+    "HplusM110" "HplusM120" 
+ #  "HplusM130" "HplusM140" "HplusM150" "HplusM155" "HplusM160" 
+    "singleTop" "Wjets" "DYjets" "VBFusion"
+  #  "MCQCDMu" #"MCQCDEle"
+    "TTGToLL" "TTGToLNu" "TTGToQQ" "TTHToNonbb" "TTHTobb" "TTHToGG"
+    "TTWJetsToLNu" "TTWJetsToQQ" "TTZToLLNuNu" "TTZToQQ" "TTbar" "DataMu" "DataEle"
 )
 
 # List of filename scenarios
@@ -20,8 +21,8 @@ argument_scenarios=("base")  # Include other scenarios as needed
 
 # Channels and region options
 channels="mu"  # Assuming you want to keep the channel constant; modify as needed
-#regions=("B" "C" "D")  # List of all regions
-regions=("A")
+regions=("A" "B" "C" "D")  # List of all regions
+#regions=("A")
 # Function to run the script
 run_script() {
     local process=$1

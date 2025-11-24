@@ -5,7 +5,7 @@ import os
 from helper import *
 
 from new_syst import *
-
+ROOT.EnableImplicitMT(24)
 '''
 parser = OptionParser()
 parser.add_option('--channel', type='string', default='mu', choices=['mu', 'ele'],
@@ -66,9 +66,9 @@ print(f"File: {FileName}, Scenario: {scenario}, Channel: {channel}, Region: {reg
 # Further processing with FileName, scenario, channel, and region
 
 
-ROOT.EnableImplicitMT(4)
+#ROOT.EnableImplicitMT(4)
 
-df = ROOT.RDataFrame("Kinfit_Reco","root::///eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/pre/Combined_all/"+FileName+".root")
+df = ROOT.RDataFrame("Kinfit_Reco","root::///eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/pre_all/"+FileName+".root")
 
 variables = ["Weight","mjj","CvsL_j2","CvsL_j1","CvsB_j1","CvsB_j2","pt_b1","pt_j1","pt_j2","pt_b2","mbb","dPhi_j1j2","dPhi_j1b1","CTopVar","CvsL_b1","CvsB_b1","CvsL_b2","DelR_j1j2","DelR_j1b2","pt_l","ht_b1b2j1j2","DelR_j2b1","dPhi_lb2","m_b1b2j1j2lv","chisq"]
 
@@ -106,9 +106,9 @@ df = define_variables(df, scenario)
 #     df.Filter("rdfentry_ % 1 == 0").Snapshot("KinFit", FileName+"_"+scenario+"_2018_mu.root", columns)
 
 # Assume outputDir is your custom output directory path
-outputDir = "/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/Full_Ntuples/" + channel + "/Base/" + region
+#outputDir = "/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/Full_Ntuples/" + channel + "/" + region
 
-#outputDir = "/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/Full_Ntuples/" + channel + "/" +"baseNtuples/" + region
+outputDir = "/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/Full_Ntuples/" + channel + "/" +"baseNtuplesFiltered/" + region
  
 # Check if the output directory exists, and create it if it doesn't
 if not os.path.exists(outputDir):
@@ -121,8 +121,8 @@ if not outputDir.endswith('/'):
 
 if scenario == "base":
     outputFile = outputDir + FileName + "_2018_mu.root"
-    df.Filter("rdfentry_ % 1 == 0").Snapshot("KinFit", outputFile, columns)
+    df.Filter("rdfentry_ % 10 == 0").Snapshot("KinFit", outputFile, columns)
 else:
     outputFile = outputDir + FileName + "_" + scenario + "_2018_mu.root"
-    df.Filter("rdfentry_ % 1 == 0").Snapshot("KinFit", outputFile, columns)
+    df.Filter("rdfentry_ % 10 == 0").Snapshot("KinFit", outputFile, columns)
 

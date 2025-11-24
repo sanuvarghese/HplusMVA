@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Directory to search
-SEARCH_DIR="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2016/pre/pre_all/"
+SEARCH_DIR="/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/pre/pre_all/"
 
 # Find files with size less than 15K and loop through them
 find "$SEARCH_DIR" -type f -size -15k | while read filename; do

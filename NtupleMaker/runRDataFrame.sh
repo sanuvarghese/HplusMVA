@@ -1,6 +1,6 @@
 #!/bin/bash
 source /cvmfs/cms.cern.ch/cmsset_default.sh
-cd /afs/cern.ch/user/s/savarghe/test3/CMSSW_12_3_0/src/HplusMVA/NtupleMaker
+cd /afs/cern.ch/work/s/savarghe/private/HplusMVA/CMSSW_13_0_10/src/HplusMVA/NtupleMaker
 eval `scramv1 runtime -sh`
 # Run the Python script
 # Construct the file name based on arguments
