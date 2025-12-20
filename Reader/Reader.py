@@ -10,7 +10,6 @@ def open_and_process_file(process, systematic, year, channel, outputDir):
 
     baseInputDir = f"/eos/cms/store/group/phys_b2g/savarghe/NewJEC/{year}/Full_Ntuples/{channel}/A/"
     inputFile = f"{baseInputDir}all_{process}_{systematic}_{year}_mu.root"
-    #outputFileName = f"{outputDir}/bdt_{process}_{systematic}_{year}_{channel}.root"
     outputFileName = f"{outputDir}/bdt_{process}_{systematic}_{year}_{channel}.root"
 
     inputFilePtr = ROOT.TFile.Open(inputFile)
@@ -23,13 +22,9 @@ def open_and_process_file(process, systematic, year, channel, outputDir):
         print(f"Tree 'KinFit' not found in file: {inputFile}")
         return
 
-    # Assuming TMVA::Reader setup and variable linking is done here in Python for reference
 
     methodName = "BDT"
     weightfile = os.path.abspath("./TMVA_bdt_planned_weights.xml")  # Ensure correct path
-# Define the histogram
-#    h1 = ROOT.TH1D("bdt_output", "Classifier Output", 30, 20, 170)
-
 
     # C++ code for the event loop including Reader setup and variable linking
     cpp_code = """
@@ -160,19 +155,6 @@ def open_and_process_file(process, systematic, year, channel, outputDir):
                   )
     """
 )
-# Define the desired output filename and directory
-    #desired_filename = f"bdt_{process}_{systematic}_{year}_{channel}.root"
-    #desired_output_path = os.path.join(outputDir, desired_filename)
-    # shutil.move("outputFileName.root", desired_output_path)
-     # Save results
-    #outputFileName = f"test/bdt_{process}_{year}_{channel}.root"
-    #outputFile = ROOT.TFile(outputFileName, "RECREATE")
-
-    # Create a directory for the systematic inside the output file
-    # sysDir = outputFile.mkdir(systematic)
-    # sysDir.cd()
-    # h1.Write()
-    #outputFile.Close()
     print(f"Analysis completed. Results saved in {os.path.join(outputDir, f'bdt_{process}_{systematic}_{year}_{channel}.root')}")
 
 

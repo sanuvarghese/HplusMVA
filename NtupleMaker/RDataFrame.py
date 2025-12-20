@@ -100,14 +100,6 @@ elif channel == "ele" and region == "D":
 df = define_variables(df, scenario)
 
 
-# if scenario == "base":
-#     df.Filter("rdfentry_ % 1 == 0").Snapshot("KinFit", FileName+"_2018_mu.root", columns)
-# else:
-#     df.Filter("rdfentry_ % 1 == 0").Snapshot("KinFit", FileName+"_"+scenario+"_2018_mu.root", columns)
-
-# Assume outputDir is your custom output directory path
-#outputDir = "/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/Full_Ntuples/" + channel + "/" + region
-
 outputDir = "/eos/cms/store/group/phys_b2g/savarghe/NewJEC/2018/Full_Ntuples/" + channel + "/" +"baseNtuplesFiltered/" + region
  
 # Check if the output directory exists, and create it if it doesn't

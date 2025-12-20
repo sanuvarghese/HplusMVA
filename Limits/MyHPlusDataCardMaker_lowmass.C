@@ -44,7 +44,7 @@ void MyHPlusDataCardMakerMini(TString inFileDir="/afs/cern.ch/work/s/savarghe/Ne
   //   totLumi = 59.7; //2018
 
   // Open data files
-  TFile* fData = TFile::Open(inFileDir+"/hist_UltimDataMu_2018_mu.root");
+  TFile* fData = TFile::Open(inFileDir+"/hist_DataMu_2018_mu.root");
   TFile* fDataEle = TFile::Open(inFileDir+"/hist_DataEle_2018_mu.root");
 
   // Open background files
@@ -63,10 +63,6 @@ void MyHPlusDataCardMakerMini(TString inFileDir="/afs/cern.ch/work/s/savarghe/Ne
 
   TFile* fTG = TFile::Open(inFileDir+"/hist_TTG_2018_mu.root");
   TFile* fTH = TFile::Open(inFileDir+"/hist_TTH_2018_mu.root");
-  //TFile* fTTHToNonbb = TFile::Open(inFileDir+"/hist_TTHToNonbb_2018_mu.root");
-  //TFile* fTTHTobb = TFile::Open(inFileDir+"/hist_TTHTobb_2018_mu.root");
-
-  //  TFile* fTTWJetsToLNu = TFile::Open(inFileDir+"/hist_TTWJetsToLNu_2018_mu.root");
   TFile* fTW = TFile::Open(inFileDir+"/hist_TTW_2018_mu.root");
 
   TFile* fTZ = TFile::Open(inFileDir+"/hist_TTZ_2018_mu.root");
@@ -211,9 +207,6 @@ normalizeHistogram(ttbar_fsrUp, ttbar);
 normalizeHistogram(ttbar_fsrDown, ttbar);
 normalizeHistogram(ttbar_isrUp, ttbar);
 normalizeHistogram(ttbar_isrDown, ttbar);
-// normalizeHistogram(ttbar_base_pdfUp, ttbar);
-// normalizeHistogram(ttbar_base_pdfDown, ttbar);
-// Normalize all bctagging uncertainties
 normalizeHistogram(ttbar_lhemuFUp, ttbar);
 normalizeHistogram(ttbar_lhemuFDown, ttbar);
 normalizeHistogram(ttbar_lhemuRUp, ttbar);
@@ -379,22 +372,6 @@ normalizeHistogram(ttg_fsrUp, ttg);
 normalizeHistogram(ttg_fsrDown, ttg);
 normalizeHistogram(ttg_isrUp, ttg);
 normalizeHistogram(ttg_isrDown, ttg);
-// normalizeHistogram(ttg_base_pdfUp, ttg);
-// normalizeHistogram(ttg_base_pdfDown, ttg);
-// normalizeHistogram(ttg_lhemuFUp, ttg);
-// normalizeHistogram(ttg_lhemuFDown, ttg);
-// normalizeHistogram(ttg_lhemuRUp, ttg);
-// normalizeHistogram(ttg_lhemuRDown, ttg);
-// normalizeHistogram(ttg_extpUp, ttg);
-// normalizeHistogram(ttg_extpDown, ttg);
-// normalizeHistogram(ttg_intpUp, ttg);
-// normalizeHistogram(ttg_intpDown, ttg);
-// normalizeHistogram(ttg_xdycUp, ttg);
-// normalizeHistogram(ttg_xdycDown, ttg);
-// normalizeHistogram(ttg_xdybUp, ttg);
-// normalizeHistogram(ttg_xdybDown, ttg);
-// normalizeHistogram(ttg_xwjcUp, ttg);
-// normalizeHistogram(ttg_xwjcDown, ttg);
   // After normalization, you may want to write the normalized histograms back to the file or use them in your analysis
   fout->cd();  // Assuming fout is the output file and already open
   ttg_bc_statUp->Write();
@@ -403,22 +380,6 @@ normalizeHistogram(ttg_isrDown, ttg);
   ttg_fsrDown->Write();
   ttg_isrUp->Write();
   ttg_isrDown->Write();
-  // ttg_base_pdfUp->Write();
-  // ttg_base_pdfDown->Write();
-// ttg_lhemuFUp->Write();
-// ttg_lhemuFDown->Write();
-// ttg_lhemuRUp->Write();
-// ttg_lhemuRDown->Write();
-// ttg_extpUp->Write();
-// ttg_extpDown->Write();
-// ttg_intpUp->Write();
-// ttg_intpDown->Write();
-// ttg_xdycUp->Write();
-// ttg_xdycDown->Write();
-// ttg_xdybUp->Write();
-// ttg_xdybDown->Write();
-// ttg_xwjcUp->Write();
-// ttg_xwjcDown->Write();
 
 
 
@@ -540,22 +501,6 @@ normalizeHistogram(tth_fsrUp, tth);
 normalizeHistogram(tth_fsrDown, tth);
 normalizeHistogram(tth_isrUp, tth);
 normalizeHistogram(tth_isrDown, tth);
-// normalizeHistogram(tth_base_pdfUp, tth);
-// normalizeHistogram(tth_base_pdfDown, tth);
-// normalizeHistogram(tth_lhemuFUp, tth);
-// normalizeHistogram(tth_lhemuFDown, tth);
-// normalizeHistogram(tth_lhemuRUp, tth);
-// normalizeHistogram(tth_lhemuRDown, tth);
-// normalizeHistogram(tth_extpUp, tth);
-// normalizeHistogram(tth_extpDown, tth);
-// normalizeHistogram(tth_intpUp, tth);
-// normalizeHistogram(tth_intpDown, tth);
-// normalizeHistogram(tth_xdycUp, tth);
-// normalizeHistogram(tth_xdycDown, tth);
-// normalizeHistogram(tth_xdybUp, tth);
-// normalizeHistogram(tth_xdybDown, tth);
-// normalizeHistogram(tth_xwjcUp, tth);
-// normalizeHistogram(tth_xwjcDown, tth);
   // After normalization, you may want to write the normalized histograms back to the file or use them in your analysis
   fout->cd();  // Assuming fout is the output file and already open
   tth_bc_statUp->Write();
@@ -564,22 +509,6 @@ normalizeHistogram(tth_isrDown, tth);
   tth_fsrDown->Write();
   tth_isrUp->Write();
   tth_isrDown->Write();
-//   tth_lhemuFUp->Write();
-// tth_lhemuFDown->Write();
-// tth_lhemuRUp->Write();
-// tth_lhemuRDown->Write();
-// tth_extpUp->Write();
-// tth_extpDown->Write();
-// tth_intpUp->Write();
-// tth_intpDown->Write();
-// tth_xdycUp->Write();
-// tth_xdycDown->Write();
-// tth_xdybUp->Write();
-// tth_xdybDown->Write();
-// tth_xwjcUp->Write();
-// tth_xwjcDown->Write();
-  // tth_base_pdfUp->Write();
-  // tth_base_pdfDown->Write();
 
 
 
@@ -689,9 +618,6 @@ TH1F* ttz_reljerhfUp = DC.readWriteHisto(fTZ, "reljerhfup/", histName, sf_ttz, f
 TH1F* ttz_reljerhfDown = DC.readWriteHisto(fTZ, "reljerhfdown/", histName, sf_ttz, fout, fTT, "ttz_reljerhfDown", true);
 TH1F* ttz_pupthfUp = DC.readWriteHisto(fTZ, "pupthfup/", histName, sf_ttz, fout, fTT, "ttz_pupthfUp", true);
 TH1F* ttz_pupthfDown = DC.readWriteHisto(fTZ, "pupthfdown/", histName, sf_ttz, fout, fTT, "ttz_pupthfDown", true);
-// Assuming ttz and all the systematic histograms are already filled and written
-  // First, retrieve the integral of the base histogram
-  //double baseIntegral = ttz->Integral();
 
 
 normalizeHistogram(ttz_bc_statUp, ttz);
@@ -700,23 +626,6 @@ normalizeHistogram(ttz_fsrUp, ttz);
 normalizeHistogram(ttz_fsrDown, ttz);
 normalizeHistogram(ttz_isrUp, ttz);
 normalizeHistogram(ttz_isrDown, ttz);
-// normalizeHistogram(ttz_lhemuFUp, ttz);
-// normalizeHistogram(ttz_lhemuFDown, ttz);
-// normalizeHistogram(ttz_lhemuRUp, ttz);
-// normalizeHistogram(ttz_lhemuRDown, ttz);
-// normalizeHistogram(ttz_extpUp, ttz);
-// normalizeHistogram(ttz_extpDown, ttz);
-// normalizeHistogram(ttz_intpUp, ttz);
-// normalizeHistogram(ttz_intpDown, ttz);
-// normalizeHistogram(ttz_xdycUp, ttz);
-// normalizeHistogram(ttz_xdycDown, ttz);
-// normalizeHistogram(ttz_xdybUp, ttz);
-// normalizeHistogram(ttz_xdybDown, ttz);
-// normalizeHistogram(ttz_xwjcUp, ttz);
-// normalizeHistogram(ttz_xwjcDown, ttz);
-// normalizeHistogram(ttz_base_pdfUp, ttz);
-// normalizeHistogram(ttz_base_pdfDown, ttz);
-
   // After normalization, you may want to write the normalized histograms back to the file or use them in your analysis
   fout->cd();  // Assuming fout is the output file and already open
   ttz_bc_statUp->Write();
@@ -726,22 +635,7 @@ normalizeHistogram(ttz_isrDown, ttz);
   ttz_isrUp->Write();
   ttz_isrDown->Write();
   ttz_lhemuFUp->Write();
-// ttz_lhemuFDown->Write();
-// ttz_lhemuRUp->Write();
-// ttz_lhemuRDown->Write();
-// ttz_extpUp->Write();
-// ttz_extpDown->Write();
-// ttz_intpUp->Write();
-// ttz_intpDown->Write();
-// ttz_xdycUp->Write();
-// ttz_xdycDown->Write();
-// ttz_xdybUp->Write();
-// ttz_xdybDown->Write();
-// ttz_xwjcUp->Write();
-// ttz_xwjcDown->Write();
 
-  // ttz_base_pdfUp->Write();
-  // ttz_base_pdfDown->Write();
 
 
 
@@ -863,22 +757,6 @@ normalizeHistogram(ttw_fsrUp, ttw);
 normalizeHistogram(ttw_fsrDown, ttw);
 normalizeHistogram(ttw_isrUp, ttw);
 normalizeHistogram(ttw_isrDown, ttw);
-// normalizeHistogram(ttw_lhemuFUp, ttw);
-// normalizeHistogram(ttw_lhemuFDown, ttw);
-// normalizeHistogram(ttw_lhemuRUp, ttw);
-// normalizeHistogram(ttw_lhemuRDown, ttw);
-// normalizeHistogram(ttw_extpUp, ttw);
-// normalizeHistogram(ttw_extpDown, ttw);
-// normalizeHistogram(ttw_intpUp, ttw);
-// normalizeHistogram(ttw_intpDown, ttw);
-// normalizeHistogram(ttw_xdycUp, ttw);
-// normalizeHistogram(ttw_xdycDown, ttw);
-// normalizeHistogram(ttw_xdybUp, ttw);
-// normalizeHistogram(ttw_xdybDown, ttw);
-// normalizeHistogram(ttw_xwjcUp, ttw);
-// normalizeHistogram(ttw_xwjcDown, ttw);
-// normalizeHistogram(ttw_base_pdfUp, ttw);
-// normalizeHistogram(ttw_base_pdfDown, ttw);
 
   // After normalization, you may want to write the normalized histograms back to the file or use them in your analysis
   fout->cd();  // Assuming fout is the output file and already open
@@ -888,23 +766,6 @@ normalizeHistogram(ttw_isrDown, ttw);
   ttw_fsrDown->Write();
   ttw_isrUp->Write();
   ttw_isrDown->Write();
-//   ttw_lhemuFUp->Write();
-// ttw_lhemuFDown->Write();
-// ttw_lhemuRUp->Write();
-// ttw_lhemuRDown->Write();
-// ttw_extpUp->Write();
-// ttw_extpDown->Write();
-// ttw_intpUp->Write();
-// ttw_intpDown->Write();
-// ttw_xdycUp->Write();
-// ttw_xdycDown->Write();
-// ttw_xdybUp->Write();
-// ttw_xdybDown->Write();
-// ttw_xwjcUp->Write();
-// ttw_xwjcDown->Write();
-
-  // ttw_base_pdfUp->Write();
-  // ttw_base_pdfDown->Write();
 
 
 
@@ -1020,9 +881,6 @@ TH1F* wjet_pupthfUp = DC.readWriteHisto(fWJ, "pupthfup/", histName, sf_wjet, fou
 TH1F* wjet_pupthfDown = DC.readWriteHisto(fWJ, "pupthfdown/", histName, sf_wjet, fout, fTT, "wjet_pupthfDown", true);
 
 
-  // Assuming wjet and all the systematic histograms are already filled and written
-  // First, retrieve the integral of the base histogram
- //double baseIntegral_wjet = wjet->Integral();
 
 normalizeHistogram(wjet_bc_statUp, wjet);
 normalizeHistogram(wjet_bc_statDown, wjet);
@@ -1030,39 +888,9 @@ normalizeHistogram(wjet_fsrUp, wjet);
 normalizeHistogram(wjet_fsrDown, wjet);
 normalizeHistogram(wjet_isrUp, wjet);
 normalizeHistogram(wjet_isrDown, wjet);
-// normalizeHistogram(wjet_lhemuFUp, wjet);
-// normalizeHistogram(wjet_lhemuFDown, wjet);
-// normalizeHistogram(wjet_lhemuRUp, wjet);
-// normalizeHistogram(wjet_lhemuRDown, wjet);
-// normalizeHistogram(wjet_extpUp, wjet);
-// normalizeHistogram(wjet_extpDown, wjet);
-// normalizeHistogram(wjet_intpUp, wjet);
-// normalizeHistogram(wjet_intpDown, wjet);
-// normalizeHistogram(wjet_xdycUp, wjet);
-// normalizeHistogram(wjet_xdycDown, wjet);
-// normalizeHistogram(wjet_xdybUp, wjet);
-// normalizeHistogram(wjet_xdybDown, wjet);
-// normalizeHistogram(wjet_xwjcUp, wjet);
-// normalizeHistogram(wjet_xwjcDown, wjet);
 
 //  fout->cd();
  
-// wjet_lhemuFUp->Write();
-// wjet_lhemuFDown->Write();
-// wjet_lhemuRUp->Write();
-// wjet_lhemuRDown->Write();
-// wjet_extpUp->Write();
-// wjet_extpDown->Write();
-// wjet_intpUp->Write();
-// wjet_intpDown->Write();
-// wjet_xdycUp->Write();
-// wjet_xdycDown->Write();
-// wjet_xdybUp->Write();
-// wjet_xdybDown->Write();
-// wjet_xwjcUp->Write();
-// wjet_xwjcDown->Write();
-// normalizeHistogram(wjet_base_pdfUp, wjet);
-// normalizeHistogram(wjet_base_pdfDo, wjet);
 
   double unc_wjet_ExL = 1.0;
   double unc_wjet_ExM = 1.0;
@@ -1180,22 +1008,6 @@ normalizeHistogram(zjet_fsrUp, zjet);
 normalizeHistogram(zjet_fsrDown, zjet);
 normalizeHistogram(zjet_isrUp, zjet);
 normalizeHistogram(zjet_isrDown, zjet);
-// normalizeHistogram(zjet_lhemuFUp, zjet);
-// normalizeHistogram(zjet_lhemuFDown, zjet);
-// normalizeHistogram(zjet_lhemuRUp, zjet);
-// normalizeHistogram(zjet_lhemuRDown, zjet);
-// normalizeHistogram(zjet_extpUp, zjet);
-// normalizeHistogram(zjet_extpDown, zjet);
-// normalizeHistogram(zjet_intpUp, zjet);
-// normalizeHistogram(zjet_intpDown, zjet);
-// normalizeHistogram(zjet_xdycUp, zjet);
-// normalizeHistogram(zjet_xdycDown, zjet);
-// normalizeHistogram(zjet_xdybUp, zjet);
-// normalizeHistogram(zjet_xdybDown, zjet);
-// normalizeHistogram(zjet_xwjcUp, zjet);
-// normalizeHistogram(zjet_xwjcDown, zjet);
-// normalizeHistogram(zjet_base_pdfUp, zjet);
-// normalizeHistogram(zjet_base_pdfDo, zjet);
   // After normalization, you may want to write the normalized histograms back to the file or use them in your analysis
   fout->cd();  // Assuming fout is the output file and already open
   zjet_bc_statUp->Write();
@@ -1205,21 +1017,6 @@ normalizeHistogram(zjet_isrDown, zjet);
   zjet_isrUp->Write();
   zjet_isrDown->Write();
   zjet_lhemuFUp->Write();
-// zjet_lhemuFDown->Write();
-// zjet_lhemuRUp->Write();
-// zjet_lhemuRDown->Write();
-// zjet_extpUp->Write();
-// zjet_extpDown->Write();
-// zjet_intpUp->Write();
-// zjet_intpDown->Write();
-// zjet_xdycUp->Write();
-// zjet_xdycDown->Write();
-// zjet_xdybUp->Write();
-// zjet_xdybDown->Write();
-// zjet_xwjcUp->Write();
-// zjet_xwjcDown->Write();
-  // zjet_base_pdfUp->Write();
-  // zjet_base_pdfDo->Write();
 
 
   double unc_zjet_ExL = 1.0;
@@ -1340,22 +1137,6 @@ normalizeHistogram(stop_fsrUp, stop);
 normalizeHistogram(stop_fsrDown, stop);
 normalizeHistogram(stop_isrUp, stop);
 normalizeHistogram(stop_isrDown, stop);
-// normalizeHistogram(stop_lhemuFUp, stop);
-// normalizeHistogram(stop_lhemuFDown, stop);
-// normalizeHistogram(stop_lhemuRUp, stop);
-// normalizeHistogram(stop_lhemuRDown, stop);
-// normalizeHistogram(stop_extpUp, stop);
-// normalizeHistogram(stop_extpDown, stop);
-// normalizeHistogram(stop_intpUp, stop);
-// normalizeHistogram(stop_intpDown, stop);
-// normalizeHistogram(stop_xdycUp, stop);
-// normalizeHistogram(stop_xdycDown, stop);
-// normalizeHistogram(stop_xdybUp, stop);
-// normalizeHistogram(stop_xdybDown, stop);
-// normalizeHistogram(stop_xwjcUp, stop);
-// normalizeHistogram(stop_xwjcDown, stop);
-// normalizeHistogram(stop_base_pdfUp, stop);
-// normalizeHistogram(stop_base_pdfDo, stop);
 
   // After normalization, you may want to write the normalized histograms back to the file or use them in your analysis
   fout->cd();  // Assuming fout is the output file and already open
@@ -1366,21 +1147,6 @@ normalizeHistogram(stop_isrDown, stop);
   stop_isrUp->Write();
   stop_isrDown->Write();
   stop_lhemuFUp->Write();
-// stop_lhemuFDown->Write();
-// stop_lhemuRUp->Write();
-// stop_lhemuRDown->Write();
-// stop_extpUp->Write();
-// stop_extpDown->Write();
-// stop_intpUp->Write();
-// stop_intpDown->Write();
-// stop_xdycUp->Write();
-// stop_xdycDown->Write();
-// stop_xdybUp->Write();
-// stop_xdybDown->Write();
-// stop_xwjcUp->Write();
-// stop_xwjcDown->Write();
- //  stop_base_pdfUp->Write();
-//   stop_base_pdfDo->Write();
 // 
   double unc_stop_ExL = 1.0;
   double unc_stop_ExM = 1.0;

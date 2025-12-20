@@ -14,7 +14,6 @@ class MyHPlusDataCardMaker{
   public:
 
   TH1F* getHisto(TFile *inRootFile, TString histPath, TString histName, TFile* fTT, double sf=1.0);
-  //  TH1F* readWriteHisto(TFile *inFile, TString histPath, TString inHistName, double sf, TFile *outFile, TFile *fTT, TString outHistName,  bool isWrite = false, double min_thres = 0, bool isNeffThreshold = false);
   TH1F* readWriteHisto(TFile *inFile, TString histPath, TString inHistName, double sf, TFile *outFile, TFile *fTT, TString outHistName,  bool isWrite, bool isNorm, TH1F *hBase);
   
   double getBTagUnc(TH1F *hCentral, TH1F* hUp, TH1F* hDown);
@@ -114,45 +113,6 @@ TH1F* MyHPlusDataCardMaker::readWriteHisto(TFile *inFile, TString histPath, TStr
 }
 
 
-/*
-TH1F* MyHPlusDataCardMaker::trimHistoNano(TH1F* hist, TString histName, float binWidth, float xMin, float xMax){
-  int nBin = TMath::Nint((xMax-xMin)/binWidth);
-    TH1F* newHisto = new TH1F(histName, histName, nBin, xMin, xMax);
-    int initX = TMath::Nint(xMin/binWidth);
-    int lastX = TMath::Nint(xMax/binWidth);
-    for(int i = initX; i<lastX; i++){
-      double binVal = hist->GetBinContent(i);
-      double binErr = hist->GetBinError(i);
-      int i_new = i - initX;
-      newHisto->SetBinContent(i_new, binVal);
-      newHisto->SetBinError(i_new, binErr);
-    }
-    return newHisto;
-}
-*/
-
-// TH1F* MyHPlusDataCardMaker::trimHistoNano(TH1F* hist, TString histName, float binWidth, float xMin, float xMax) {
-//     int nBins = TMath::Nint((xMax - xMin) / binWidth);
-//     TH1F* newHisto = new TH1F(histName, histName, nBins, xMin, xMax);
-
-//     int initX = TMath::Nint(xMin / hist->GetBinWidth(1));  // Use the original histogram's bin width for indexing
-//     int lastX = TMath::Nint(xMax / hist->GetBinWidth(1));   // Adjust indexing based on the original histogram's bin width
-
-//     for (int i = initX; i < lastX; ++i) {
-//         double binVal = hist->GetBinContent(i);
-//         double binErr = hist->GetBinError(i);
-//         int i_new = i - initX;  // Adjust for the new histogram's bin index
-//            // Set content to 1e-6 for empty bins
-//         if (binVal == 0) {
-//             binVal = 1e-3;
-//             binErr = 0.0;
-//         }
-
-// 	newHisto->SetBinContent(i_new, binVal);
-//         newHisto->SetBinError(i_new, binErr);
-//     }
-//     return newHisto;
-// }
 TH1F* MyHPlusDataCardMaker::trimHistoNano(TH1F* hist, TString histName, float binWidth, float xMin, float xMax) {
     // Number of original bins
     int nBins = TMath::Nint((xMax - xMin) / binWidth);
@@ -241,90 +201,6 @@ TH1F* MyHPlusDataCardMaker::trimHistoNano(TH1F* hist, TString histName, float bi
 }
 
 
-// TH1F* MyHPlusDataCardMaker::trimHistoNano(TH1F* hist, TString histName, float binWidth, float xMin, float xMax) {
-//     // Number of bins for the temporary histogram
-//     int nBins = TMath::Nint((xMax - xMin) / binWidth);
-//     TH1F* tmpHisto = new TH1F("tmp", "tmp", nBins, xMin, xMax);
-
-//     // Fill the temporary histogram
-//     int initX = hist->FindBin(xMin);       // First bin within xMin
-//     int lastX = hist->FindBin(xMax) - 1;   // Last bin within xMax
-//     for (int i = initX; i <= lastX; ++i) {
-//         double binCenter = hist->GetBinCenter(i);
-//         double binVal = hist->GetBinContent(i);
-//         double binErr = hist->GetBinError(i);
-
-//         int i_new = tmpHisto->FindBin(binCenter);
-//         if (binVal == 0) {
-//             binVal = 1e-3;
-//             binErr = 0.0;
-//         }
-//         tmpHisto->SetBinContent(i_new, binVal);
-//         tmpHisto->SetBinError(i_new, binErr);
-//     }
-
-//     // Prepare new bin edges: last bin will be wider (merging last two bins)
-//     int nMerged = nBins - 1;
-//     std::vector<double> binEdges;
-//     for (int i = 1; i <= nBins - 1; ++i) // binLowEdge(1) ... binLowEdge(nBins-1)
-//         binEdges.push_back(tmpHisto->GetBinLowEdge(i));
-//     // Add upper edge of the *last* bin (so last bin covers both previous bins)
-//     binEdges.push_back(tmpHisto->GetBinLowEdge(nBins) + tmpHisto->GetBinWidth(nBins));
-
-//     // Create the final histogram with merged bins
-//     TH1F* newHisto = new TH1F(histName, histName, nMerged, &binEdges[0]);
-
-//     // Copy all but last bin
-//     for (int i = 1; i <= nMerged - 1; ++i) {
-//         newHisto->SetBinContent(i, tmpHisto->GetBinContent(i));
-//         newHisto->SetBinError(i, tmpHisto->GetBinError(i));
-//     }
-//     // Merge last two bins
-//     double c_last = tmpHisto->GetBinContent(nBins);
-//     double e_last = tmpHisto->GetBinError(nBins);
-//     double c_2last = tmpHisto->GetBinContent(nBins - 1);
-//     double e_2last = tmpHisto->GetBinError(nBins - 1);
-
-//     newHisto->SetBinContent(nMerged, c_last + c_2last);
-//     newHisto->SetBinError(nMerged, std::sqrt(e_last*e_last + e_2last*e_2last));
-
-//     delete tmpHisto;
-//     return newHisto;
-// }
-
-
-// TH1F* MyHPlusDataCardMaker::trimHistoNano(TH1F* hist, TString histName, float binWidth, float xMin, float xMax) {
-//     // Number of bins for the new histogram
-//     int nBins = TMath::Nint((xMax - xMin) / binWidth);
-//     TH1F* newHisto = new TH1F(histName, histName, nBins, xMin, xMax);
-
-//     // Find the corresponding bin indices in the original histogram
-//     int initX = hist->FindBin(xMin);       // First bin within xMin
-//     int lastX = hist->FindBin(xMax) - 1;  // Last bin within xMax
-
-//     // Loop over the bins within the specified range
-//     for (int i = initX; i <= lastX; ++i) {
-//         double binCenter = hist->GetBinCenter(i);
-//         double binVal = hist->GetBinContent(i);
-//         double binErr = hist->GetBinError(i);
-
-//         // Map the bin center to the new histogram
-//         int i_new = newHisto->FindBin(binCenter);
-
-//         // Set content to 1e-6 for empty bins
-//         if (binVal ==0) {
-//             binVal = 1e-3;
-//             binErr = 0.0;
-//         }
-
-	
-//         // Set content and error in the new histogram
-//         newHisto->SetBinContent(i_new, binVal);
-//         newHisto->SetBinError(i_new, binErr);
-//     }
-
-//     return newHisto;
-// }
 
 //get normalised uncertainity
 double MyHPlusDataCardMaker::getBTagUnc(TH1F *hCentral, TH1F* hUp, TH1F* hDown){
@@ -533,27 +409,6 @@ double MyHPlusDataCardMaker::getSysUncQcd(TFile* fData, TFile* fTT, TFile* fST, 
   return 1+unc;
 }
 
-/* void MyHPlusDataCardMaker::replaceSystematicUnc(std::string& line, TH1F* wh, TH1F* whUp, TH1F* whDown, TH1F* ttbar, TH1F* ttbarUp, TH1F* ttbarDown, TH1F* wjet, TH1F* wjetUp, TH1F* wjetDown, TH1F* zjet, TH1F* zjetUp, TH1F* zjetDown, TH1F* stop, TH1F* stopUp, TH1F* stopDown, TH1F* vv, TH1F* vvUp, TH1F* vvDown, std::ofstream& out) { */
-/*   float unc_wh = (wh->Integral() > 0) ? getBTagUnc(wh, whUp, whDown) : 1.00; */
-/*   line.replace(line.find("HHHH"), 4, std::to_string(unc_wh)); */
-
-/*   float unc_ttbar = (ttbar->Integral() > 0) ? getBTagUnc(ttbar, ttbarUp, ttbarDown) : 1.00; */
-/*   line.replace(line.find("TTTT"), 4, std::to_string(unc_ttbar)); */
-
-/*   float unc_wjet = (wjet->Integral() > 0) ? getBTagUnc(wjet, wjetUp, wjetDown) : 1.00; */
-/*   line.replace(line.find("WWWW"), 4, std::to_string(unc_wjet)); */
-
-/*   float unc_zjet = (zjet->Integral() > 0) ? getBTagUnc(zjet, zjetUp, zjetDown) : 1.00; */
-/*   line.replace(line.find("DDDD"), 4, std::to_string(unc_zjet)); */
-
-/*   float unc_stop = (stop->Integral() > 0) ? getBTagUnc(stop, stopUp, stopDown) : 1.00; */
-/*   line.replace(line.find("SSSS"), 4, std::to_string(unc_stop)); */
-
-/*   float unc_vv = (vv->Integral() > 0) ? getBTagUnc(vv, vvUp, vvDown) : 1.00; */
-/*   line.replace(line.find("VVVV"), 4, std::to_string(unc_vv)); */
-
-/*   out << line << std::endl; */
-/* } */
 
 void MyHPlusDataCardMaker::replaceSystematicUnc(std::string& line, TH1F* wh, TH1F* whUp, TH1F* whDown, TH1F* ttbar, TH1F* ttbarUp, TH1F* ttbarDown, TH1F* wjet, TH1F* wjetUp, TH1F* wjetDown, TH1F* zjet, TH1F* zjetUp, TH1F* zjetDown, TH1F* stop, TH1F* stopUp, TH1F* stopDown, TH1F* vv, TH1F* vvUp, TH1F* vvDown,TH1F* ttg, TH1F* ttgUp, TH1F* ttgDown , TH1F* ttw, TH1F* ttwUp, TH1F* ttwDown, TH1F* ttz, TH1F* ttzUp, TH1F* ttzDown,TH1F* tth, TH1F* tthUp, TH1F* tthDown, std::ofstream& out) {
   auto replaceUncertainty = [&](TH1F* hist, TH1F* histUp, TH1F* histDown, const std::string& tag) {
