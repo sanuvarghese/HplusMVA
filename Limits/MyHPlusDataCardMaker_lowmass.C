@@ -35,13 +35,7 @@ void MyHPlusDataCardMakerMini(TString inFileDir="/afs/cern.ch/work/s/savarghe/Ne
 
   TString year = "2018";
 
-  //int year = syear.Atoi();
-  // int year = syear.Atoi();
    double totLumi = 35.9; //2018
-  //  if(year==2018)
-  //    totLumi = 41.5; // 2018
-  //  if(year==2018)
-  //   totLumi = 59.7; //2018
 
   // Open data files
   TFile* fData = TFile::Open(inFileDir+"/hist_DataMu_2018_mu.root");
@@ -67,8 +61,6 @@ void MyHPlusDataCardMakerMini(TString inFileDir="/afs/cern.ch/work/s/savarghe/Ne
 
   TFile* fTZ = TFile::Open(inFileDir+"/hist_TTZ_2018_mu.root");
   
-  //OUTPUT FILE
-  // TFile *fout = new TFile(TString("Shapes_hcs_13TeV_")+channelName+TString("_")+histSubDir_+TString("_")+workingpoint+histName+TString("_")+label+TString(".root"), "RECREATE");
 
   // Adjusted OUTPUT FILE creation line without "_output_"
   TFile *fout = new TFile(TString("Shapes_hcs_2018_")+channelName+TString("_")+histSubDir_+TString("_")+workingpoint+histName+TString("_")+label+TString(".root"), "RECREATE");
