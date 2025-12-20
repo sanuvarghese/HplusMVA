@@ -31,18 +31,10 @@ void MyHPlusDataCardMakerMini(TString inFileDir="/afs/cern.ch/work/s/savarghe/Ne
   bool isMuChannel = false; 
   TString workingpoint = "ExcTight";
   if(channelName=="mu") isMuChannel = true;
-  //inFileDir = inFileDir + "/" + syear;
 
   TString year = "2018";
 
-  //int year = syear.Atoi();
-  // int year = syear.Atoi();
    double totLumi = 35.9; //2018
-  //  if(year==2018)
-  //    totLumi = 41.5; // 2018
-  //  if(year==2018)
-  //   totLumi = 59.7; //2018
-
   // Open data files
   TFile* fData = TFile::Open(inFileDir+"/hist_DataMu_2018_mu.root");
   TFile* fDataEle = TFile::Open(inFileDir+"/hist_DataEle_2018_mu.root");
@@ -1781,7 +1773,6 @@ void MyHPlusDataCardMaker(TString inFileDir="/afs/cern.ch/work/s/savarghe/NewJEC
 {
 
   MyHPlusDataCardMakerMini(inFileDir, histSubDir_, histName, channelName, mass, label, hPlusFileName);                                                            
-  //  MyHPlusDataCardMakerNano(inFileDir, histSubDir_, histName, channelName, mass, label, hPlusFileName);
 
 
 }

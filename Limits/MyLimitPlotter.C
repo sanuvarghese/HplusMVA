@@ -240,17 +240,6 @@ void LimitPlotter(TString CHANNEL="ele", TString CAT= "inc",
 }
 
 void MyLimitPlotter(){
-  /*
-  LimitPlotter("mu", "Cat1_Inc",     true, true );
-  LimitPlotter("mu", "Cat2_cTagInc", true, true );
-  LimitPlotter("mu", "Cat3_cTagEx",  true, true );
 
-  LimitPlotter("ele", "Cat1_Inc",     true, true );
-  LimitPlotter("ele", "Cat2_cTagInc", true, true );
-  LimitPlotter("ele", "Cat3_cTagEx",  true, true );
-
-  LimitPlotter("mu_ele", "Cat1_Inc",     true, true );
-  LimitPlotter("mu_ele", "Cat2_cTagInc", true, true );
-  */
   LimitPlotter("ele", "Cat1_Inc",  false, true );
 }
